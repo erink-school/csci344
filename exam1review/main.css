@@ -1,0 +1,39 @@
+body {
+    background-color: #0e172a;
+    color: white;
+}
+
+.grid-layout {
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr;
+    gap: 20px;
+    border: solid 1px lightslategray;
+    padding: 40px;
+    border-radius: 20px;
+}
+
+.grid-layout > * {
+    border: solid 1px lightslategray;
+    padding: 20px;
+    border-radius: 20px;
+}
+
+header, footer {
+    grid-column: 1 / 4;
+}
+
+main {
+    min-height: 270px;
+}
+
+nav, main, aside {
+    text-align: center;
+}
+
+@media screen and (max-width: 600px) {
+    .grid-layout {
+        grid-template-columns: 1fr;
+    }
+
+    
+}
