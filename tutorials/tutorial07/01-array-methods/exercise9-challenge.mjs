@@ -7,3 +7,9 @@ const students = [
 ];
 
 // Your code here (hint: use template literals)
+const csFormatted = students
+    .filter(student => student.major === "Computer Science")
+    .toSorted((a, b) => a.grade - b.grade)
+    .map(student => `<p><strong>${student.name}:</strong> ${student.grade} (${student.major})</p>`);
+
+console.log(csFormatted);

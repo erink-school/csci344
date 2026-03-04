@@ -7,3 +7,5 @@ const students = [
 ];
 
 // Your code here
+const sortedByGrade = students.toSorted((a, b) => b.grade - a.grade);
+console.log(sortedByGrade);

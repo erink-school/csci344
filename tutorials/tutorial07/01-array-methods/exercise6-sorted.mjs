@@ -7,3 +7,5 @@ const students = [
 ];
 
 // Your code here
+const sortedByMajor = students.toSorted((a, b) => a.major.localeCompare(b.major));
+console.log(sortedByMajor);

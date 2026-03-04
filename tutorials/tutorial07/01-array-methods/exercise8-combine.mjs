@@ -7,3 +7,8 @@ const students = [
 ];
 
 // Your code here
+const csHighGrades = students
+    .filter(student => student.major === "Computer Science" && student.grade >= 85)
+    .map(student => student.name);
+
+console.log(csHighGrades);
