@@ -8,8 +8,10 @@ const getMeteors = async (startDate, endDate) => {
 };
 
 // meteors
-const data = await getMeteors("2024-10-08", "2024-10-09");
+const data = await getMeteors("2026-03-05", "2026-03-10");
 console.log(data);
+const meteors_0310 = data.near_earth_objects["2026-03-10"]
+console.log(meteors_0310[0]); //data for first meter on 3/10/26
 
 /**
  * Exercise:

@@ -14,3 +14,10 @@ export async function getAccessToken(rootURL, username, password) {
     const data = await response.json();
     return data.access_token;
 }
+async function printToken() {
+    const token = getAccessToken
+    getAccessToken("https://photo-app-secured.herokuapp.com", "erink", "password");
+    console.log(token);
+}
+
+printToken();

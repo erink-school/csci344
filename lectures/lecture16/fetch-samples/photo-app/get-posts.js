@@ -3,7 +3,7 @@ const rootURL = "https://photo-app-secured.herokuapp.com";
 
 export async function getPosts() {
     // get access token (like logging in) so that you can query for "your data":
-    const token = await getAccessToken(rootURL, "sarah", "password");
+    const token = await getAccessToken(rootURL, "erink", "password");
 
     // endpoint:
     const endpoint = `${rootURL}/api/posts/`;
@@ -28,6 +28,17 @@ export async function getPosts() {
 
     // now wait for response body (also asynchronous):
     const posts = await response.json();
+
+    function ownedByMe(post) {
+        if (post.user.username === "erink") {
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    const myPosts = posts.filter(ownedByMe);
+    console.log(myPosts)
 
     // print a dump of the first post:
     console.log(JSON.stringify(posts[0], null, "   "));
