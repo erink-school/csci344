@@ -35,7 +35,7 @@ export default function App() {
     return (
         <div>
             <h1>This is a Gallery of Photos</h1>
-            <Carousel photos={galleries[0].photos} />
+            <Carousel photos={galleries[1].photos} />
         </div>
     );
 }
