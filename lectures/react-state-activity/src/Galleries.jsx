@@ -11,8 +11,9 @@ export default function Galleries({galleries, activeIndex, setActiveIndex}) {
                 galleries.map(function(gallery, idx) {
                     return (
                         <button 
-                            
-                            onClick={() => {switchGallery(idx)}}>{gallery.name} - {idx === activeIndex ? "actiive" : ""}</button>
+                            onClick={() => {switchGallery(idx)}}>
+                            {gallery.name} - {idx === activeIndex ? "active" : ""}
+                        </button>
                     )
                 })
             }
