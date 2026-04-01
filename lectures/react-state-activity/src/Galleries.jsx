@@ -1,6 +1,21 @@
-import React from "react"
-export default function Galleries() {
+import React, {useState} from "react"
+export default function Galleries({galleries, activeIndex, setActiveIndex}) {
+
+    function switchGallery(idx) {
+        setActiveIndex(idx)
+    }
+
     return (
-        <button>{galleries[0].name}</button>
+        <>
+            {
+                galleries.map(function(gallery, idx) {
+                    return (
+                        <button 
+                            
+                            onClick={() => {switchGallery(idx)}}>{gallery.name} - {idx === activeIndex ? "actiive" : ""}</button>
+                    )
+                })
+            }
+        </>
     )
 }
