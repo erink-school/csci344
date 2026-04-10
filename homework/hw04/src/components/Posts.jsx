@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { getDataFromServer } from "../server-requests";
+import Post from "./Post.jsx";
 
 export default function Posts({ token }) {
     const [posts, setPosts] = useState([]);
@@ -14,5 +15,12 @@ export default function Posts({ token }) {
         getPosts();
     }, []);
 
-    return <div>TODO: output all of the posts: {posts.length}</div>;
+    return (
+        <div>
+            {posts.length}
+            {
+                posts.map((post) => <Post post={post}/>)
+            }
+        </div>
+    );
 }
