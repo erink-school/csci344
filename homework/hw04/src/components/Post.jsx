@@ -1,4 +1,6 @@
 import React from "react";
+import LikeButton from "./LikeButton";
+import BookmarkButton from "./BookmarkButton";
 
 export default function Post({post}){
     return (
@@ -12,31 +14,28 @@ export default function Post({post}){
             <div className="p-4">
                 <div className="flex justify-between text-2xl mb-3">
                     <div>
-                        <button><i className="fas fa-heart text-red-600"></i></button>
+                        <LikeButton post={post} />
                         <button><i className="far fa-comment"></i></button>
                         <button><i className="far fa-paper-plane"></i></button>
                     </div>
                     <div>
-                        <button><i className="fas fa-bookmark"></i></button>
+                        <BookmarkButton post={post} />
                     </div>
                 </div>
-                <p className="font-bold mb-3">30 likes</p>
+                <p className="font-bold mb-3">{post.likes.length}</p>
                 <div className="text-sm mb-3">
                     <p>
-                        <strong>gibsonjack</strong>
-                        Here is a caption about the photo.
-                        Text text text text text text text text text
-                        text text text text text text text text... <button className="button">more</button>
+                        <strong>{post.user.username}</strong>
+                        {post.alt_text} <button className="button">more</button>
                     </p>
                 </div>
-                <p className="text-sm mb-3">
-                    <strong>lizzie</strong>
-                    Here is a comment text text text text text text text text.
-                </p>
-                <p className="text-sm mb-3">
-                    <strong>vanek97</strong>
-                    Here is another comment text text text.
-                </p>
+                {post.comments.map(comment => (
+                    <p key={comment.id} className="text-sm mb-3">
+                        <strong>{comment.user.username}</strong>
+                        {comment.text}
+                    </p>
+                ))
+                }
                 <p className="uppercase text-gray-500 text-xs">1 day ago</p>
             </div>
             <div className="flex justify-between items-center p-3">
