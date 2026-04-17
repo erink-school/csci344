@@ -1,0 +1,13 @@
+1. Name three tables that correspond to the Resource types that are defined in api.config.yaml.
+Which table is not defined by your YAML but still exists? (Hint: accounts.)
+
+Sneaker, Brand and Favorite
+
+2. Pick one resource table (e.g. sneakers). Which columns look like they are referencing
+data in other tables (this is called a “foreign key”)?
+
+aaa
+
+3. What looks different between the required and optional fields in the database?
+
+aaa
