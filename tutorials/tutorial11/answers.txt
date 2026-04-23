@@ -6,8 +6,41 @@ Sneaker, Brand and Favorite
 2. Pick one resource table (e.g. sneakers). Which columns look like they are referencing
 data in other tables (this is called a “foreign key”)?
 
-aaa
+In the sneakers table the type refrences the table brands
 
 3. What looks different between the required and optional fields in the database?
 
-aaa
+optional fields allow NULL values
+
+4. In one sentence: what is the difference between changing data with npm run seed and changing 
+data only through the REST API or data grid?
+
+Running seed will load all the data in the csv at once, using the REST API or data grid
+modifies one request at a time
+
+5. Why should you run npm run generate again before npm run seed if you just edited 
+api.config.yaml?
+
+Because generate will update the csv template to match the new config
+
+6. How did the list request URL change when you applied the filter(s)? 
+(Mention the path, any new or removed query parameters, or if only the Network tab showed a change.)
+
+The path stayed the same but new parameters were added
+
+7. Suppose your Sneakers API endpoint is /api/sneakers and name is marked queryable in api.config.yaml. 
+What URL would you use for a GET request that asks the server for sneakers whose name includes the substring running?
+
+/api/sneakers?name=running
+
+8. What is one difference between experimenting in /api/docs and experimenting in 
+the data grid?
+
+When using /api/docs you are using the raw data but the data grid gives an interface to 
+view the data 
+
+9. What is one advantage of introducing a separate PlantType resource (with a relation from Plant) 
+instead of keeping species as a plain string on every plant row?
+
+Allows plants to share types (ie they belong to the same family of plants) and helps to 
+avoid duplicates or missspellings 

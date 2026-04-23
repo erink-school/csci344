@@ -3,6 +3,7 @@ import { clearToken, getToken, getUsername } from "./tokenStorage.js";
 import Login from "./components/Login.jsx";
 import Navbar from "./components/Navbar.jsx";
 import Homepage from "./components/Homepage.jsx";
+import BarChartComponent from "./components/BarChart.jsx";
 
 export default function App() {
   const savedToken = getToken();
@@ -21,6 +22,8 @@ export default function App() {
   if (!hasToken) {
     return <Login handleLoggedIn={handleLoggedIn} />;
   }
+
+// this is the main screen of your app after you have logged in:
 
   return (
     <div className="min-h-screen bg-slate-50 text-slate-900">
