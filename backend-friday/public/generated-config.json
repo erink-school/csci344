@@ -1,0 +1,145 @@
+{
+  "meta": {
+    "configPath": "C:\\Users\\rinke\\OneDrive\\Desktop\\school\\csci344\\backend-friday\\examples\\video_games\\api.config.yaml",
+    "generatedAt": "2026-04-24T19:01:25.373Z",
+    "seedDir": "examples\\video_games"
+  },
+  "resources": [
+    {
+      "type": "VideoGame",
+      "tableName": "video_games",
+      "fileBase": "video-games",
+      "path": "/api/video-games",
+      "operations": [
+        "list",
+        "retrieve",
+        "create",
+        "update",
+        "delete"
+      ],
+      "shareable": false,
+      "ownershipEnabled": true,
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "storageType": "string",
+          "required": true,
+          "relation": null,
+          "query": {
+            "param": "name",
+            "op": "contains"
+          }
+        },
+        {
+          "name": "developer",
+          "type": "Developer",
+          "storageType": "integer",
+          "required": false,
+          "relation": {
+            "resourceType": "Developer",
+            "targetField": "id"
+          },
+          "query": {
+            "param": "developer",
+            "op": "eq"
+          }
+        },
+        {
+          "name": "photo",
+          "type": "image_url",
+          "storageType": "image_url",
+          "required": true,
+          "relation": null,
+          "query": null
+        }
+      ],
+      "permissions": {
+        "list": "public",
+        "retrieve": "public",
+        "create": "user",
+        "update": "owner",
+        "delete": "owner"
+      },
+      "queryFilters": [
+        {
+          "param": "name",
+          "fieldName": "name",
+          "op": "contains",
+          "type": "string",
+          "storageType": "string",
+          "relation": null
+        },
+        {
+          "param": "developer",
+          "fieldName": "developer",
+          "op": "eq",
+          "type": "Developer",
+          "storageType": "integer",
+          "relation": {
+            "resourceType": "Developer",
+            "targetField": "id"
+          }
+        },
+        {
+          "param": "owner_id",
+          "fieldName": "owner_id",
+          "op": "eq",
+          "type": "integer",
+          "storageType": "integer",
+          "relation": null
+        }
+      ]
+    },
+    {
+      "type": "Developer",
+      "tableName": "developers",
+      "fileBase": "developers",
+      "path": "/api/developers",
+      "operations": [
+        "list",
+        "retrieve",
+        "create",
+        "update",
+        "delete"
+      ],
+      "shareable": false,
+      "ownershipEnabled": true,
+      "fields": [
+        {
+          "name": "name",
+          "type": "string",
+          "storageType": "string",
+          "required": true,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "description",
+          "type": "text",
+          "storageType": "text",
+          "required": false,
+          "relation": null,
+          "query": null
+        }
+      ],
+      "permissions": {
+        "list": "public",
+        "retrieve": "public",
+        "create": "user",
+        "update": "owner",
+        "delete": "owner"
+      },
+      "queryFilters": [
+        {
+          "param": "owner_id",
+          "fieldName": "owner_id",
+          "op": "eq",
+          "type": "integer",
+          "storageType": "integer",
+          "relation": null
+        }
+      ]
+    }
+  ]
+}

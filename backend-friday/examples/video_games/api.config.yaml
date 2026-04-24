@@ -1,0 +1,37 @@
+resources:
+  - type: VideoGame
+    path: /api/video-games
+    operations: [list, retrieve, create, update, delete]
+    fields:
+      - name: name
+        type: string
+        required: true
+        query: true
+      - name: developer
+        type: Developer
+        query: true
+      - name: photo
+        type: image_url
+        required: true
+    permissions:
+      list: public
+      retrieve: public
+      create: user
+      update: owner
+      delete: owner
+
+  - type: Developer
+    path: /api/developers
+    operations: [list, retrieve, create, update, delete]
+    fields:
+      - name: name
+        type: string
+        required: true
+      - name: description
+        type: text
+    permissions:
+      list: public
+      retrieve: public
+      create: user
+      update: owner
+      delete: owner
