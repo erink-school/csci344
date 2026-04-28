@@ -1,6 +1,6 @@
 resources:
-  - type: Sneaker
-    path: /api/sneakers
+  - type: Computer
+    path: /api/computers
     operations: [list, retrieve, create, update, delete]
     fields:
       - name: name
@@ -17,8 +17,17 @@ resources:
       - name: photo
         type: image_url
         required: true
-      - name: size
+      - name: category
+        type: string
+        query: true
+      - name: ram
         type: integer
+        query: true
+      - name: storage
+        type: integer
+        query: true
+      - name: processor
+        type: string
         query: true
       - name: is_available
         type: boolean
@@ -47,14 +56,15 @@ resources:
       create: user
       update: owner
       delete: owner
-  - type: Favorite
-    path: /api/favorites
+
+  - type: Wishlist
+    path: /api/wishlist
     operations: [list, retrieve, create, update, delete]
     fields:
       - name: note
         type: string
-      - name: sneaker
-        type: Sneaker
+      - name: computer
+        type: Computer
         required: true
         query: true
     permissions:
@@ -64,8 +74,8 @@ resources:
       update: owner
       delete: owner
 
-  - type: Order
-    path: /api/orders
+  - type: Reservation
+    path: /api/reservations
     operations: [list, retrieve, create, update, delete]
     fields:
       - name: customer_name
@@ -74,17 +84,18 @@ resources:
       - name: email
         type: string
         required: true
+      - name: phone
+        type: string
       - name: status
         type: string
         required: true
         query: true
-      - name: total
-        type: number
-        required: true
-      - name: created_at
+      - name: pickup_date
         type: datetime
-      - name: sneaker
-        type: Sneaker
+      - name: notes
+        type: text
+      - name: computer
+        type: Computer
         required: true
         query: true
     permissions:
