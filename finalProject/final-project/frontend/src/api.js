@@ -6,26 +6,32 @@ export function getApiBaseUrl() {
 
 export async function sendRequest(path, options = {}) {
   const token = getToken();
-  const headers = { "Content-Type": "application/json" };
+
+  const headers = {
+    "Content-Type": "application/json",
+    ...(options.headers || {}),
+  };
 
   if (token) {
-    headers.Authorization = "Bearer " + token;
+    headers.Authorization = `Bearer ${token}`;
   }
 
   const response = await fetch(getApiBaseUrl() + path, {
-    method: options.method,
-    body: options.body,
+    method: options.method || "GET",
     headers,
+    body: options.body,
   });
 
   if (!response.ok) {
     let message = `Request failed (${response.status})`;
+
     try {
-      const errorBody = await response.json();
-      message = errorBody.error || errorBody.message || message;
+      const data = await response.json();
+      message = data.error || data.message || message;
     } catch {
-      // Keep the default message if the server does not return JSON.
+      // ignore
     }
+
     throw new Error(message);
   }
 
@@ -36,8 +42,23 @@ export async function sendRequest(path, options = {}) {
   return response.json();
 }
 
-// TODO: Add your own endpoint functions below.
-// Example:
-// export function getItems() {
-//   return sendRequest("/api/items");
-// }
+export function getComputers() {
+  return sendRequest("/api/computers");
+}
+
+export function createWishlistItem(computerId, note) {
+  return sendRequest("/api/wishlist", {
+    method: "POST",
+    body: JSON.stringify({
+      computer: computerId,
+      note,
+    }),
+  });
+}
+
+export function createReservation(data) {
+  return sendRequest("/api/reservations", {
+    method: "POST",
+    body: JSON.stringify(data),
+  });
+}

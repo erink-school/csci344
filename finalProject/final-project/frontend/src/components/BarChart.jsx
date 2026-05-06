@@ -1,35 +1,36 @@
-import React from "react";
 import {
+  ResponsiveContainer,
   BarChart,
-  Bar,
+  CartesianGrid,
   XAxis,
   YAxis,
   Tooltip,
-  CartesianGrid,
-  ResponsiveContainer,
+  Bar,
 } from "recharts";
 
+export default function BarChartComponent({ items }) {
+  const grouped = {};
 
-export default function BarChartComponent({items}) {
+  items.forEach((item) => {
+    grouped[item.category] = (grouped[item.category] || 0) + 1;
+  });
 
+  const data = Object.keys(grouped).map((key) => ({
+    name: key,
+    value: grouped[key],
+  }));
 
-    const data = [
-        { name: "Apple Trees", value: 4 },
-        { name: "Blueberry Bushes", value: 10 },
-        { name: "Grape Vines", value: 6 },
-    ];
-
-    return (
-        <div style={{ width: "100%", height: 300 }}>
-            <ResponsiveContainer>
-                <BarChart data={data}>
-                    <CartesianGrid strokeDasharray="3 3" />
-                    <XAxis dataKey="name" />
-                    <YAxis />
-                    <Tooltip />
-                    <Bar dataKey="value" fill="#2f6fed" />
-                </BarChart>
-            </ResponsiveContainer>
-        </div>
-    );
-};
+  return (
+    <div className="h-72 w-full">
+      <ResponsiveContainer>
+        <BarChart data={data}>
+          <CartesianGrid strokeDasharray="3 3" />
+          <XAxis dataKey="name" />
+          <YAxis />
+          <Tooltip />
+          <Bar dataKey="value" fill="#2563eb" />
+        </BarChart>
+      </ResponsiveContainer>
+    </div>
+  );
+}

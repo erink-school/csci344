@@ -1,15 +1,15 @@
 {
   "meta": {
-    "configPath": "/Users/svanwart/unca/csci344/spring2026/final-project/api-generator/api.config.yaml",
-    "generatedAt": "2026-04-22T17:02:16.441Z",
-    "seedDir": "data/sample-data"
+    "configPath": "C:\\Users\\rinke\\OneDrive\\Desktop\\school\\csci344\\finalProject\\final-project\\backend\\api.config.yaml",
+    "generatedAt": "2026-05-06T01:37:02.953Z",
+    "seedDir": "data\\sample-data"
   },
   "resources": [
     {
-      "type": "Sneaker",
-      "tableName": "sneakers",
-      "fileBase": "sneakers",
-      "path": "/api/sneakers",
+      "type": "Computer",
+      "tableName": "computers",
+      "fileBase": "computers",
+      "path": "/api/computers",
       "operations": [
         "list",
         "retrieve",
@@ -65,14 +65,47 @@
           "query": null
         },
         {
-          "name": "size",
+          "name": "category",
+          "type": "string",
+          "storageType": "string",
+          "required": false,
+          "relation": null,
+          "query": {
+            "param": "category",
+            "op": "contains"
+          }
+        },
+        {
+          "name": "ram",
           "type": "integer",
           "storageType": "integer",
           "required": false,
           "relation": null,
           "query": {
-            "param": "size",
+            "param": "ram",
             "op": "eq"
+          }
+        },
+        {
+          "name": "storage",
+          "type": "integer",
+          "storageType": "integer",
+          "required": false,
+          "relation": null,
+          "query": {
+            "param": "storage",
+            "op": "eq"
+          }
+        },
+        {
+          "name": "processor",
+          "type": "string",
+          "storageType": "string",
+          "required": false,
+          "relation": null,
+          "query": {
+            "param": "processor",
+            "op": "contains"
           }
         },
         {
@@ -131,11 +164,35 @@
           "relation": null
         },
         {
-          "param": "size",
-          "fieldName": "size",
+          "param": "category",
+          "fieldName": "category",
+          "op": "contains",
+          "type": "string",
+          "storageType": "string",
+          "relation": null
+        },
+        {
+          "param": "ram",
+          "fieldName": "ram",
           "op": "eq",
           "type": "integer",
           "storageType": "integer",
+          "relation": null
+        },
+        {
+          "param": "storage",
+          "fieldName": "storage",
+          "op": "eq",
+          "type": "integer",
+          "storageType": "integer",
+          "relation": null
+        },
+        {
+          "param": "processor",
+          "fieldName": "processor",
+          "op": "contains",
+          "type": "string",
+          "storageType": "string",
           "relation": null
         },
         {
@@ -207,10 +264,10 @@
       ]
     },
     {
-      "type": "Favorite",
-      "tableName": "favorites",
-      "fileBase": "favorites",
-      "path": "/api/favorites",
+      "type": "Wishlist",
+      "tableName": "wishlists",
+      "fileBase": "wishlists",
+      "path": "/api/wishlist",
       "operations": [
         "list",
         "retrieve",
@@ -230,16 +287,16 @@
           "query": null
         },
         {
-          "name": "sneaker",
-          "type": "Sneaker",
+          "name": "computer",
+          "type": "Computer",
           "storageType": "integer",
           "required": true,
           "relation": {
-            "resourceType": "Sneaker",
+            "resourceType": "Computer",
             "targetField": "id"
           },
           "query": {
-            "param": "sneaker",
+            "param": "computer",
             "op": "eq"
           }
         }
@@ -253,13 +310,13 @@
       },
       "queryFilters": [
         {
-          "param": "sneaker",
-          "fieldName": "sneaker",
+          "param": "computer",
+          "fieldName": "computer",
           "op": "eq",
-          "type": "Sneaker",
+          "type": "Computer",
           "storageType": "integer",
           "relation": {
-            "resourceType": "Sneaker",
+            "resourceType": "Computer",
             "targetField": "id"
           }
         },
@@ -274,10 +331,10 @@
       ]
     },
     {
-      "type": "Order",
-      "tableName": "orders",
-      "fileBase": "orders",
-      "path": "/api/orders",
+      "type": "Reservation",
+      "tableName": "reservations",
+      "fileBase": "reservations",
+      "path": "/api/reservations",
       "operations": [
         "list",
         "retrieve",
@@ -305,6 +362,14 @@
           "query": null
         },
         {
+          "name": "phone",
+          "type": "string",
+          "storageType": "string",
+          "required": false,
+          "relation": null,
+          "query": null
+        },
+        {
           "name": "status",
           "type": "string",
           "storageType": "string",
@@ -316,15 +381,7 @@
           }
         },
         {
-          "name": "total",
-          "type": "number",
-          "storageType": "number",
-          "required": true,
-          "relation": null,
-          "query": null
-        },
-        {
-          "name": "created_at",
+          "name": "pickup_date",
           "type": "datetime",
           "storageType": "datetime",
           "required": false,
@@ -332,16 +389,24 @@
           "query": null
         },
         {
-          "name": "sneaker",
-          "type": "Sneaker",
+          "name": "notes",
+          "type": "text",
+          "storageType": "text",
+          "required": false,
+          "relation": null,
+          "query": null
+        },
+        {
+          "name": "computer",
+          "type": "Computer",
           "storageType": "integer",
           "required": true,
           "relation": {
-            "resourceType": "Sneaker",
+            "resourceType": "Computer",
             "targetField": "id"
           },
           "query": {
-            "param": "sneaker",
+            "param": "computer",
             "op": "eq"
           }
         }
@@ -363,13 +428,13 @@
           "relation": null
         },
         {
-          "param": "sneaker",
-          "fieldName": "sneaker",
+          "param": "computer",
+          "fieldName": "computer",
           "op": "eq",
-          "type": "Sneaker",
+          "type": "Computer",
           "storageType": "integer",
           "relation": {
-            "resourceType": "Sneaker",
+            "resourceType": "Computer",
             "targetField": "id"
           }
         },
